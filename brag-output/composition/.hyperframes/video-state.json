@@ -1,0 +1,186 @@
+{
+  "version": 1,
+  "historyId": "952a4a1d-857f-454e-8147-2346b11123a4",
+  "currentRevision": "cae4a412-787f-428a-abf8-d09696726ab2",
+  "pendingChanges": false,
+  "files": {
+    "AGENTS.md": {
+      "hash": "1b36171117cb7c18f4100a0db6a3782ff2e096115995733200445cc2e80a4060",
+      "content": "C:\\Users\\facun\\.cache\\hyperframes\\history\\952a4a1d-857f-454e-8147-2346b11123a4\\blobs\\1b\\1b36171117cb7c18f4100a0db6a3782ff2e096115995733200445cc2e80a4060"
+    },
+    "CLAUDE.md": {
+      "hash": "1b36171117cb7c18f4100a0db6a3782ff2e096115995733200445cc2e80a4060",
+      "content": "C:\\Users\\facun\\.cache\\hyperframes\\history\\952a4a1d-857f-454e-8147-2346b11123a4\\blobs\\1b\\1b36171117cb7c18f4100a0db6a3782ff2e096115995733200445cc2e80a4060"
+    },
+    "hyperframes.json": {
+      "hash": "53dbce1e19aa713cbb12ee0bc4d206143b45ab15e6ffbfcaa8f69572d4d24d50",
+      "content": "C:\\Users\\facun\\.cache\\hyperframes\\history\\952a4a1d-857f-454e-8147-2346b11123a4\\blobs\\53\\53dbce1e19aa713cbb12ee0bc4d206143b45ab15e6ffbfcaa8f69572d4d24d50"
+    },
+    "index.html": {
+      "hash": "3687d6edbd4eb98562cb4c0557f9a10a74af8f16a4a625bb7acab44bca1d6640",
+      "content": "C:\\Users\\facun\\.cache\\hyperframes\\history\\952a4a1d-857f-454e-8147-2346b11123a4\\blobs\\36\\3687d6edbd4eb98562cb4c0557f9a10a74af8f16a4a625bb7acab44bca1d6640"
+    },
+    "meta.json": {
+      "hash": "43fc63e110436f2b25b3a6d3cd8df13c24790efa6d298a8ef252b96ca503c4f6",
+      "content": "C:\\Users\\facun\\.cache\\hyperframes\\history\\952a4a1d-857f-454e-8147-2346b11123a4\\blobs\\43\\43fc63e110436f2b25b3a6d3cd8df13c24790efa6d298a8ef252b96ca503c4f6"
+    },
+    "package.json": {
+      "hash": "67d6eda05e75fdec92883361f075f5c7c7116ad7cb441374d0aecb1d051cf25f",
+      "content": "C:\\Users\\facun\\.cache\\hyperframes\\history\\952a4a1d-857f-454e-8147-2346b11123a4\\blobs\\67\\67d6eda05e75fdec92883361f075f5c7c7116ad7cb441374d0aecb1d051cf25f"
+    },
+    "music.mp3": {
+      "hash": "aa56ab1cdcbef6b05566c6a7c114323078580ccf6a740a9e6c6b6c4b40b4389f",
+      "content": "C:\\Users\\facun\\.cache\\hyperframes\\history\\952a4a1d-857f-454e-8147-2346b11123a4\\blobs\\aa\\aa56ab1cdcbef6b05566c6a7c114323078580ccf6a740a9e6c6b6c4b40b4389f"
+    }
+  },
+  "revisions": {
+    "277cb21b-b4f7-43b9-a938-e71050dd85e9": {
+      "actor": {
+        "kind": "outside",
+        "name": "Outside"
+      },
+      "label": "Changed outside the app",
+      "startedAt": 1793277938802,
+      "endedAt": 1793277938840,
+      "files": {
+        "index.html": {
+          "before": "C:\\Users\\facun\\.cache\\hyperframes\\history\\952a4a1d-857f-454e-8147-2346b11123a4\\blobs\\6a\\6a113838a27f17664b975753071997c5946b67f30c6d3d94c781d439c359f41a",
+          "after": "C:\\Users\\facun\\.cache\\hyperframes\\history\\952a4a1d-857f-454e-8147-2346b11123a4\\blobs\\d3\\d36a452607f38955c5040c649f81cadd16aad2ff5924eff2f2d01aca7cc2ef2f"
+        },
+        "music.mp3": {
+          "before": null,
+          "after": "C:\\Users\\facun\\.cache\\hyperframes\\history\\952a4a1d-857f-454e-8147-2346b11123a4\\blobs\\aa\\aa56ab1cdcbef6b05566c6a7c114323078580ccf6a740a9e6c6b6c4b40b4389f"
+        }
+      }
+    },
+    "cae4a412-787f-428a-abf8-d09696726ab2": {
+      "actor": {
+        "kind": "outside",
+        "name": "Outside"
+      },
+      "label": "Changed outside the app",
+      "startedAt": 1793278007170,
+      "endedAt": 1793278007174,
+      "files": {
+        "index.html": {
+          "before": "C:\\Users\\facun\\.cache\\hyperframes\\history\\952a4a1d-857f-454e-8147-2346b11123a4\\blobs\\d3\\d36a452607f38955c5040c649f81cadd16aad2ff5924eff2f2d01aca7cc2ef2f",
+          "after": "C:\\Users\\facun\\.cache\\hyperframes\\history\\952a4a1d-857f-454e-8147-2346b11123a4\\blobs\\36\\3687d6edbd4eb98562cb4c0557f9a10a74af8f16a4a625bb7acab44bca1d6640"
+        }
+      }
+    }
+  },
+  "checks": {
+    "latest": {
+      "revision": "cae4a412-787f-428a-abf8-d09696726ab2",
+      "id": "6da6b27b-4330-4a24-888e-e39dbdfcc402"
+    },
+    "revisions": {
+      "277cb21b-b4f7-43b9-a938-e71050dd85e9": [
+        {
+          "id": "7cd33217-d419-438e-ae35-1b636645b415",
+          "scope": "project",
+          "metadata": {
+            "ok": false,
+            "browserSkipped": false,
+            "options": {
+              "samples": 9,
+              "atTransitions": false,
+              "maxIssues": 80,
+              "collapseStatic": true,
+              "tolerance": 2,
+              "timeout": 10000,
+              "contrast": true,
+              "strict": false,
+              "snapshots": false,
+              "browserGpuMode": "auto"
+            }
+          },
+          "createdAt": 1793277947491,
+          "contentHash": "5748804a7775e6708582d520fd4f6ca6e7b6e659f5f43a7746a97795bcbe29be",
+          "revision": "277cb21b-b4f7-43b9-a938-e71050dd85e9",
+          "inputFingerprint": "b161de7365663d3ccc200e4a77ceda557528a05a89530d78405b561f7452f0e0",
+          "inputScope": "local-project-files",
+          "attribution": "recorded-revision",
+          "status": "cleaned",
+          "cleanedAfterRender": "018d9908-ccda-4b9d-b48d-39be9499a27b"
+        }
+      ],
+      "cae4a412-787f-428a-abf8-d09696726ab2": [
+        {
+          "id": "6da6b27b-4330-4a24-888e-e39dbdfcc402",
+          "scope": "project",
+          "report": "C:\\Code\\MicroLAB\\flybrain\\brag-output\\composition\\.hyperframes\\artifacts\\checks\\6da6b27b-4330-4a24-888e-e39dbdfcc402.json",
+          "metadata": {
+            "ok": true,
+            "browserSkipped": false,
+            "options": {
+              "samples": 9,
+              "atTransitions": false,
+              "maxIssues": 80,
+              "collapseStatic": true,
+              "tolerance": 2,
+              "timeout": 10000,
+              "contrast": true,
+              "strict": false,
+              "snapshots": false,
+              "browserGpuMode": "auto"
+            }
+          },
+          "createdAt": 1793278014729,
+          "contentHash": "bc0763b0dad3763233d5b510eb9023a70da4f109980a98655c9963ce49b2bd8e",
+          "revision": "cae4a412-787f-428a-abf8-d09696726ab2",
+          "inputFingerprint": "da83f4f27c063078de42474c475eaa86fa95308dfd478a818c582666d7adfd7f",
+          "inputScope": "local-project-files",
+          "attribution": "recorded-revision"
+        }
+      ]
+    },
+    "unversioned": [
+      {
+        "id": "d41ea6cf-5b23-413c-838b-c43f4d04de2a",
+        "scope": "project",
+        "report": "C:\\Code\\MicroLAB\\flybrain\\brag-output\\composition\\.hyperframes\\artifacts\\checks\\d41ea6cf-5b23-413c-838b-c43f4d04de2a.json",
+        "metadata": {
+          "ok": true,
+          "browserSkipped": false,
+          "options": {
+            "samples": 9,
+            "atTransitions": false,
+            "maxIssues": 80,
+            "collapseStatic": true,
+            "tolerance": 2,
+            "timeout": 10000,
+            "contrast": true,
+            "strict": false,
+            "snapshots": false,
+            "browserGpuMode": "auto"
+          }
+        },
+        "createdAt": 1793277844804,
+        "contentHash": "b519d8eeb9db8cfc3469d26082451a075e109f3a5888c09590f2d38bcafcdcb4",
+        "revision": null,
+        "inputFingerprint": "81cfeaff3b90514f7cd1d258d1ef73b53f89797ae5182003a90491bdf2625aa9",
+        "inputScope": "local-project-files",
+        "attribution": "unversioned"
+      }
+    ]
+  },
+  "snapshots": {
+    "latest": null,
+    "revisions": {},
+    "unversioned": []
+  },
+  "renders": {
+    "latest": {
+      "id": "018d9908-ccda-4b9d-b48d-39be9499a27b",
+      "completedAt": 1793278100458,
+      "output": "C:\\Code\\MicroLAB\\flybrain\\brag-output\\brag.mp4",
+      "status": "completed",
+      "revision": "cae4a412-787f-428a-abf8-d09696726ab2"
+    },
+    "retainedRevisions": [
+      "cae4a412-787f-428a-abf8-d09696726ab2"
+    ]
+  },
+  "pendingArtifactCleanup": []
+}

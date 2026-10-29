@@ -44,56 +44,60 @@ export default function Toolbar({
           &#9776;
         </button>
 
-        <button
-          className={`tool-btn ${activeTool === 'feed' ? 'active' : ''}`}
-          onClick={() => setActiveTool('feed')}
-        >
-          Alimentar
-        </button>
-        <button
-          className={`tool-btn ${activeTool === 'touch' ? 'active' : ''}`}
-          onClick={() => setActiveTool('touch')}
-        >
-          Tocar
-        </button>
-        <button
-          className={`tool-btn ${activeTool === 'air' ? 'active' : ''}`}
-          onClick={() => setActiveTool('air')}
-        >
-          Aire
-        </button>
+        <div className="toolbar-group">
+          <button
+            className={`tool-btn ${activeTool === 'feed' ? 'active' : ''}`}
+            onClick={() => setActiveTool('feed')}
+          >
+            Alimentar
+          </button>
 
-        <button className="tool-btn" id="lightBtn" onClick={onToggleLight}>
-          {getLightText(lightState)}
-        </button>
+          <button
+            className={`tool-btn ${activeTool === 'touch' ? 'active' : ''}`}
+            onClick={() => setActiveTool('touch')}
+          >
+            Tocar
+          </button>
 
-        <button className="tool-btn" id="tempBtn" onClick={onToggleTemp}>
-          {getTempText(tempState)}
-        </button>
+          <button
+            className={`tool-btn ${activeTool === 'air' ? 'active' : ''}`}
+            onClick={() => setActiveTool('air')}
+          >
+            Aire
+          </button>
 
-        <button className="tool-btn" id="brain3dBtn" onClick={onOpenBrain3D}>
-          Cerebro 3D
-        </button>
+          <button className="tool-btn" id="lightBtn" onClick={onToggleLight}>
+            {getLightText(lightState)}
+          </button>
 
-        <button className="tool-btn" id="researchBtn" onClick={onOpenResearch} title="Estudios Científicos y Copia Digital del Cerebro">
-          🔬 Investigación
-        </button>
+          <button className="tool-btn" id="tempBtn" onClick={onToggleTemp}>
+            {getTempText(tempState)}
+          </button>
+        </div>
 
-        <button className="tool-btn" id="learnBtn" onClick={onOpenEducation}>
-          Aprender
-        </button>
+        <div className="toolbar-divider" />
 
-        <button className="tool-btn" id="helpBtn" onClick={onOpenHelp}>
-          ?
-        </button>
+        <div className="toolbar-group">
+          <button className="tool-btn" id="brain3dBtn" onClick={onOpenBrain3D}>
+            Cerebro 3D
+          </button>
 
-        <button
-          className={`tool-btn ${isLiteMode ? 'active' : ''}`}
-          id="liteBtn"
-          onClick={onToggleLite}
-        >
-          {isLiteMode ? 'Completo' : 'Básico'}
-        </button>
+          <button className="tool-btn" id="researchBtn" onClick={onOpenResearch} title="Estudios Científicos y Copia Digital del Cerebro">
+            🔬 Investigación
+          </button>
+
+          <button className="tool-btn" id="helpBtn" onClick={onOpenHelp}>
+            ?
+          </button>
+
+          <button
+            className={`tool-btn ${isLiteMode ? 'active' : ''}`}
+            id="liteBtn"
+            onClick={onToggleLite}
+          >
+            {isLiteMode ? 'Completo' : 'Básico'}
+          </button>
+        </div>
       </div>
 
       <div className="toolbar-right">

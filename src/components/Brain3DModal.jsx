@@ -101,45 +101,74 @@ export default function Brain3DModal({ isOpen, onClose }) {
   const [activeFilter, setActiveFilter] = useState('all'); // 'all', 'sensory', 'central', 'drives', 'motor'
   const [telemetry, setTelemetry] = useState({ totalActive: 0, firingRate: 0, topRegion: 'Normal' });
 
+  const activeFilterRef = useRef(activeFilter);
+  useEffect(() => {
+    activeFilterRef.current = activeFilter;
+  }, [activeFilter]);
+
   useEffect(() => {
     if (!isOpen) return;
 
     let animId;
     let cleanup = null;
 
-    // Small frame delay to guarantee containerRef is attached to DOM
+    // Delay initialization to ensure DOM layout has rendered the container width/height
     const timer = setTimeout(() => {
       const container = containerRef.current;
       if (!container) return;
 
-      const width = container.clientWidth || 800;
-      const height = container.clientHeight || 600;
+      let width = container.clientWidth || container.getBoundingClientRect().width || 800;
+      let height = container.clientHeight || container.getBoundingClientRect().height || 500;
 
-    // --- Scene Setup ---
-    const scene = new THREE.Scene();
-    scene.background = new THREE.Color(0x060913); // Deep space bio-lab dark
-    scene.fog = new THREE.FogExp2(0x060913, 0.03);
+      // Fallback if dimensions are 0
+      if (width === 0) width = 800;
+      if (height === 0) height = 500;
 
-    // --- Camera & Renderer ---
-    const camera = new THREE.PerspectiveCamera(45, width / height, 0.1, 100);
-    camera.position.set(0, 2.5, 11);
+      // --- Scene Setup ---
+      const scene = new THREE.Scene();
+      scene.background = new THREE.Color(0x060913); // Deep space bio-lab dark
+      scene.fog = new THREE.FogExp2(0x060913, 0.03);
 
-    const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true, powerPreference: 'high-performance' });
-    renderer.setSize(width, height);
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-    renderer.toneMapping = THREE.ACESFilmicToneMapping;
-    renderer.toneMappingExposure = 1.25;
-    containerRef.current.appendChild(renderer.domElement);
+      // --- Camera & Renderer ---
+      const camera = new THREE.PerspectiveCamera(45, width / height, 0.1, 100);
+      camera.position.set(0, 2.5, 11);
 
-    // Attach pointer move listener for 3D raycasting inspection
-    renderer.domElement.addEventListener('mousemove', handlePointerMove);
+      const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true, powerPreference: 'high-performance' });
+      renderer.setSize(width, height);
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+      renderer.toneMapping = THREE.ACESFilmicToneMapping;
+      renderer.toneMappingExposure = 1.25;
+      container.appendChild(renderer.domElement);
 
-    // --- Orbit Controls ---
-    const controls = new OrbitControls(camera, renderer.domElement);
-    controls.enableDamping = true;
-    controls.dampingFactor = 0.05;
-    controls.maxDistance = 25;
-    controls.minDistance = 3;
+      // Mousemove listener for raycasting
+      const handlePointerMove = (e) => {
+        if (!renderer.domElement) return;
+        const rect = renderer.domElement.getBoundingClientRect();
+        mouse.x = ((e.clientX - rect.left) / rect.width) * 2 - 1;
+        mouse.y = -((e.clientY - rect.top) / rect.height) * 2 + 1;
+
+        raycaster.setFromCamera(mouse, camera);
+        const allMeshes = [];
+        regionObjects.forEach((ro) => ro.regGroup.traverse((child) => { if (child.isMesh) allMeshes.push(child); }));
+
+        const intersects = raycaster.intersectObjects(allMeshes);
+        if (intersects.length > 0) {
+          let parent = intersects[0].object.parent;
+          while (parent && !parent.userData.region) parent = parent.parent;
+          if (parent && parent.userData.region) {
+            setSelectedRegion(parent.userData.region);
+          }
+        }
+      };
+
+      renderer.domElement.addEventListener('mousemove', handlePointerMove);
+
+      // --- Orbit Controls ---
+      const controls = new OrbitControls(camera, renderer.domElement);
+      controls.enableDamping = true;
+      controls.dampingFactor = 0.05;
+      controls.maxDistance = 25;
+      controls.minDistance = 3;
 
     // --- Lighting ---
     const ambientLight = new THREE.AmbientLight(0x223355, 1.2);
@@ -181,23 +210,21 @@ export default function Brain3DModal({ isOpen, onClose }) {
       const regGroup = new THREE.Group();
       regGroup.userData = { region: reg };
 
-      const mat = new THREE.MeshPhysicalMaterial({
+      const mat = new THREE.MeshStandardMaterial({
         color: reg.color,
         emissive: reg.color,
-        emissiveIntensity: 0.35,
+        emissiveIntensity: 0.6,
         transparent: true,
-        opacity: 0.65,
-        roughness: 0.2,
-        metalness: 0.1,
-        clearcoat: 0.8,
-        clearcoatRoughness: 0.1,
+        opacity: 0.75,
+        roughness: 0.3,
+        metalness: 0.2,
       });
 
       const wireMat = new THREE.MeshBasicMaterial({
         color: reg.color,
         wireframe: true,
         transparent: true,
-        opacity: 0.25,
+        opacity: 0.35,
       });
 
       reg.meshes.forEach((mDef) => {
@@ -226,7 +253,7 @@ export default function Brain3DModal({ isOpen, onClose }) {
       });
 
       scene.add(regGroup);
-      regionObjects.push({ regGroup, reg, mat });
+      regionObjects.push({ regGroup, reg, mat, wireMat, animOpacity: 1.0, animScale: 1.0 });
     });
 
     // --- High-Density Neural Particle Cloud (Representing 139K Neurons) ---
@@ -305,25 +332,6 @@ export default function Brain3DModal({ isOpen, onClose }) {
     const raycaster = new THREE.Raycaster();
     const mouse = new THREE.Vector2();
 
-    const handlePointerMove = (e) => {
-      const rect = renderer.domElement.getBoundingClientRect();
-      mouse.x = ((e.clientX - rect.left) / rect.width) * 2 - 1;
-      mouse.y = -((e.clientY - rect.top) / rect.height) * 2 + 1;
-
-      raycaster.setFromCamera(mouse, camera);
-      const allMeshes = [];
-      regionObjects.forEach((ro) => ro.regGroup.traverse((child) => { if (child.isMesh) allMeshes.push(child); }));
-
-      const intersects = raycaster.intersectObjects(allMeshes);
-      if (intersects.length > 0) {
-        let parent = intersects[0].object.parent;
-        while (parent && !parent.userData.region) parent = parent.parent;
-        if (parent && parent.userData.region) {
-          setSelectedRegion(parent.userData.region);
-        }
-      }
-    };
-
     let animId;
     let startTime = performance.now();
 
@@ -343,7 +351,8 @@ export default function Brain3DModal({ isOpen, onClose }) {
       let topRegName = 'Reposo';
 
       // Update region glows based on real-time neural firing from connectome
-      regionObjects.forEach(({ regGroup, reg, mat }) => {
+      regionObjects.forEach((item) => {
+        const { regGroup, reg, mat, wireMat } = item;
         let sum = 0;
         reg.neurons.forEach((n) => {
           if (BRAIN.postSynaptic && BRAIN.postSynaptic[n]) {
@@ -358,15 +367,25 @@ export default function Brain3DModal({ isOpen, onClose }) {
           topRegName = reg.name;
         }
 
+        // Smooth Layer Filter Transition (Fade-in/out & Scale pulse)
+        const filterVal = activeFilterRef.current;
+        const isTargetVisible = filterVal === 'all' || reg.type === filterVal;
+        const targetOpacity = isTargetVisible ? 1.0 : 0.0;
+        const targetScale = isTargetVisible ? 1.0 : 0.4;
+
+        item.animOpacity += (targetOpacity - item.animOpacity) * 0.1;
+        item.animScale += (targetScale - item.animScale) * 0.1;
+
+        regGroup.scale.set(item.animScale, item.animScale, item.animScale);
+
         const intensity = Math.min(2.0, avg / 20);
-
-        // Pulse effect
         const pulse = Math.sin(elapsedTime * 4 + reg.name.length) * 0.1;
-        mat.emissiveIntensity = 0.25 + intensity + pulse;
-        mat.opacity = 0.5 + Math.min(0.4, intensity * 0.4);
+        mat.emissiveIntensity = (0.35 + intensity + pulse) * item.animOpacity;
+        mat.opacity = (0.75 + Math.min(0.25, intensity * 0.2)) * item.animOpacity;
 
-        // Filter visibility
-        if (activeFilter !== 'all' && reg.type !== activeFilter) {
+        wireMat.opacity = 0.35 * item.animOpacity;
+
+        if (item.animOpacity < 0.01) {
           regGroup.visible = false;
         } else {
           regGroup.visible = true;
@@ -414,7 +433,7 @@ export default function Brain3DModal({ isOpen, onClose }) {
       clearTimeout(timer);
       if (cleanup) cleanup();
     };
-  }, [isOpen, activeFilter]);
+  }, [isOpen]);
 
   if (!isOpen) return null;
 

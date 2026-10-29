@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <defs>
+    <radialGradient id="eyeGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#f87171" />
+      <stop offset="100%" stop-color="#dc2626" />
+    </radialGradient>
+    <linearGradient id="bodyGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#8d5b30" />
+      <stop offset="100%" stop-color="#361d0b" />
+    </linearGradient>
+    <linearGradient id="wingGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="rgba(0, 242, 254, 0.85)" />
+      <stop offset="100%" stop-color="rgba(56, 189, 248, 0.35)" />
+    </linearGradient>
+  </defs>
+
+  <!-- Glowing background ring -->
+  <circle cx="32" cy="32" r="30" fill="#090d16" stroke="#00f2fe" stroke-width="2.5" />
+
+  <!-- Legs -->
+  <path d="M 22 24 L 10 16 M 42 24 L 54 16" stroke="#b37c47" stroke-width="2.5" stroke-linecap="round" />
+  <path d="M 20 32 L 8 32 M 44 32 L 56 32" stroke="#b37c47" stroke-width="2.5" stroke-linecap="round" />
+  <path d="M 22 40 L 10 48 M 42 40 L 54 48" stroke="#b37c47" stroke-width="2.5" stroke-linecap="round" />
+
+  <!-- Abdomen -->
+  <ellipse cx="32" cy="44" rx="10" ry="14" fill="url(#bodyGrad)" stroke="#29180c" stroke-width="1.5" />
+  <!-- Abdomen Stripes -->
+  <line x1="23" y1="38" x2="41" y2="38" stroke="#29180c" stroke-width="2.5" stroke-linecap="round" />
+  <line x1="24" y1="44" x2="40" y2="44" stroke="#29180c" stroke-width="2.5" stroke-linecap="round" />
+  <line x1="26" y1="50" x2="38" y2="50" stroke="#29180c" stroke-width="2.5" stroke-linecap="round" />
+
+  <!-- Translucent Hologram Wings -->
+  <path d="M 30 26 C 16 18 12 36 28 42 Z" fill="url(#wingGrad)" stroke="#00f2fe" stroke-width="1.2" />
+  <path d="M 34 26 C 48 18 52 36 36 42 Z" fill="url(#wingGrad)" stroke="#00f2fe" stroke-width="1.2" />
+
+  <!-- Thorax -->
+  <ellipse cx="32" cy="26" rx="8" ry="10" fill="url(#bodyGrad)" stroke="#3d2512" stroke-width="1.5" />
+
+  <!-- Head -->
+  <ellipse cx="32" cy="14" rx="6" ry="5" fill="#a16d3b" />
+
+  <!-- Big Red Eyes -->
+  <ellipse cx="27" cy="13" rx="3.5" ry="4" fill="url(#eyeGlow)" />
+  <ellipse cx="37" cy="13" rx="3.5" ry="4" fill="url(#eyeGlow)" />
+  <!-- Eye highlights -->
+  <circle cx="26" cy="11.5" r="1" fill="#ffffff" />
+  <circle cx="36" cy="11.5" r="1" fill="#ffffff" />
+
+  <!-- Antennae -->
+  <path d="M 30 10 L 27 6 M 34 10 L 37 6" stroke="#e2b887" stroke-width="1.5" stroke-linecap="round" />
+</svg>

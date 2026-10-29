@@ -130,19 +130,19 @@ export default function LeftSidebar({ nodeActivations, tooltip, setTooltip }) {
 
   return (
     <div className="left-panel-dock">
-      <div className="lp-content">
-        {/* Header */}
-        <div className="rp-header">
-          <div className="rp-title-group">
-            <span className="rp-badge">NEURAL MONITOR</span>
-            <h3 className="rp-title">Osciloscopio eEEG</h3>
-          </div>
-          <div className="rp-status-indicator">
-            <span className="status-dot pulsing"></span>
-            <span className="status-text">ACTIVE</span>
-          </div>
+      {/* Header bar flush with toolbar */}
+      <div className="rp-header">
+        <div className="rp-title-group">
+          <span className="rp-badge">NEURAL MONITOR</span>
+          <h3 className="rp-title">Osciloscopio eEEG</h3>
         </div>
+        <div className="rp-status-indicator">
+          <span className="status-dot pulsing"></span>
+          <span className="status-text">ACTIVE</span>
+        </div>
+      </div>
 
+      <div className="lp-content">
         <div className="rp-tab-body">
           <div className="rp-section">
             <div className="rp-section-header">Señal Neuronal en Tiempo Real</div>

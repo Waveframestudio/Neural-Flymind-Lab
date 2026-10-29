@@ -10,12 +10,14 @@ import HelpOverlay from './components/HelpOverlay';
 import EducationModal from './components/EducationModal';
 import ReportModal from './components/ReportModal';
 import ResearchModal from './components/ResearchModal';
+import LoadingScreen from './components/LoadingScreen';
 import { BRAIN } from './connectome';
 import { caretakerBridge } from './services/caretakerBridge';
 import { bioAudio } from './services/bioAudio';
 import './App.css';
 
 export default function App() {
+  const [isLoading, setIsLoading] = useState(true);
   const [activeTool, setActiveTool] = useState('feed');
   const [lightState, setLightState] = useState('bright');
   const [tempState, setTempState] = useState('neutral');
@@ -146,6 +148,9 @@ export default function App() {
       <HelpOverlay isOpen={isHelpOpen} onClose={() => setIsHelpOpen(false)} />
 
       <EducationModal isOpen={isEducationOpen} onClose={() => setIsEducationOpen(false)} />
+
+      {/* Scientific subtle Loading Screen */}
+      {isLoading && <LoadingScreen onLoaded={() => setIsLoading(false)} />}
 
       {/* Fullscreen Mobile Portrait Orientation Lock Overlay */}
       <div className="rotate-overlay">

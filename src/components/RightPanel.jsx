@@ -152,19 +152,19 @@ export default function RightPanel({ drives, nodeActivations, lightState, tempSt
 
   return (
     <div className="right-panel">
-      <div className="right-panel-content">
-        {/* Header */}
-        <div className="rp-header">
-          <div className="rp-title-group">
-            <span className="rp-badge">LAB TELEMETRY v2.4</span>
-            <h3 className="rp-title">Métricas Neuronal</h3>
-          </div>
-          <div className="rp-status-indicator">
-            <span className="status-dot pulsing"></span>
-            <span className="status-text">ONLINE</span>
-          </div>
+      {/* Header bar flush with toolbar */}
+      <div className="rp-header">
+        <div className="rp-title-group">
+          <span className="rp-badge">LAB TELEMETRY v2.4</span>
+          <h3 className="rp-title">Métricas Neuronal</h3>
         </div>
+        <div className="rp-status-indicator">
+          <span className="status-dot pulsing"></span>
+          <span className="status-text">ONLINE</span>
+        </div>
+      </div>
 
+      <div className="right-panel-content">
         {/* METRICS & DRIVE ANALYTICS ONLY */}
         <div className="rp-tab-body">
           <div className="rp-metric-grid">
